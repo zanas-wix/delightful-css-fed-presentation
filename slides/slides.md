@@ -1,7 +1,8 @@
 ---
-theme: penguin
-background: https://images.unsplash.com/photo-1532799044142-bace80c88320?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80
-class: 'text-center'
+theme: ./theme
+background: >-
+  https://images.unsplash.com/photo-1532799044142-bace80c88320?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80
+class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
@@ -10,11 +11,15 @@ info: |
 css: unocss
 layout: intro
 hideInToc: true
+title: Delightful CSS
+themeConfig:
+  - --slidev-theme-secondary: red
 ---
 
 # Delightful CSS
 
 What's on the horizon?
+
 
 ---
 hideInToc: true
