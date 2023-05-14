@@ -3,6 +3,8 @@
   // can be overrided by uses `themeConfig` option
   --slidev-theme-primary: #3e5166;
   --slidev-theme-secondary: #34d399;
+  --curve-big-fill: purple;
+  --curve-small-fill: pink;
 }
 
 /* general css here */
@@ -10,9 +12,13 @@
 html:not(.dark) #slide-content {
   /* light mode css here */
   @apply bg-white text-primary;
+
 }
 
 .dark #slide-content {
+  --curve-big-fill: rgb(183, 183, 183);
+  --curve-small-fill: rgb(110, 110, 110);
+
   /* dark mode css here */
   @apply bg-primary-600 text-light-300;
 
@@ -40,7 +46,7 @@ html:not(.dark) #slide-content {
   }
 
   a {
-    @apply text-primary-400 hover:text-primary-500 dark:text-gray-50 dark:hover:text-primary-500 transition ease-in-out duration-300;
+    @apply text-secondary-600 hover:text-secondary-700 dark:text-gray-50 dark:hover:text-secondary-300 transition ease-in-out duration-300;
   }
 
   img {
@@ -78,9 +84,9 @@ html:not(.dark) #slide-content {
   }
 
   code {
-    @apply text-secondary-300;
+    @apply dark:text-secondary-300 text-secondary-600;
 
-    font-size: 0.65rem !important;
+    font-size: 1em;
   }
 
   .slidev-code-wrapper > pre {
