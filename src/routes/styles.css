@@ -6,12 +6,12 @@
 		--text-color-100: #94a3b8;
 		--text-color-200: #475569;
 		--text-color-300: #020617;
-		--primary-hsl: 163deg 94% 24%;
+		--primary-hsl: 193deg 94% 24%;
 		--primary: hsl(var(--primary-hsl));
 		--radius: 1rem;
 
 		--shadow-color: var(--primary-hsl);
-		--shadow-opacity: 0.14;
+		--shadow-opacity: 0.08;
 		--shadow-elevation-low: 0 1px 1.1px hsl(var(--shadow-color) / var(--shadow-opacity)),
 			0 1.7px 1.9px -1.2px hsl(var(--shadow-color) / var(--shadow-opacity)),
 			0 4px 4.5px -2.5px hsl(var(--shadow-color) / var(--shadow-opacity));
@@ -41,6 +41,9 @@
 		background-blend-mode: color-burn;
 		background-size: 25%;
 		overflow-y: scroll;
+		scroll-behavior: smooth;
+
+		scroll-snap-type: y mandatory;
 	}
 
 	body {

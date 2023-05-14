@@ -1,3 +1,9 @@
+const params = new URLSearchParams({
+	fit: 'crop',
+	w: '1200',
+	h: '800',
+}).toString()
+
 const articles = [
 	{
 		heading: 'Hilarious Cats Caught in Awkward Sleeping Positions',
@@ -6,7 +12,7 @@ const articles = [
 		author: 'Luna Meowington',
 		date: 'May 10, 2023',
 		image_url:
-			'https://images.unsplash.com/photo-1620071134584-93621c411448?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400&q=80'
+			'https://images.unsplash.com/photo-1620071134584-93621c411448?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&' + params
 	},
 	{
 		heading: 'Adorable Cat Fails at Being Stealthy, Hilarity Ensues',
@@ -15,7 +21,7 @@ const articles = [
 		author: 'Whiskers McFluffington',
 		date: 'May 12, 2023',
 		image_url:
-			'https://images.unsplash.com/photo-1534803359379-964dadf6c290?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400&q=80'
+			'https://images.unsplash.com/photo-1534803359379-964dadf6c290?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&' + params
 	},
 	{
 		heading: 'Cats Photobombing Family Portraits: A Compilation',
@@ -24,7 +30,7 @@ const articles = [
 		author: 'Purrfectly Pawsome',
 		date: 'May 14, 2023',
 		image_url:
-			'https://images.unsplash.com/photo-1677629828024-7793ff7d9403?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400&q=80'
+			'https://images.unsplash.com/photo-1677629828024-7793ff7d9403?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&' + params
 	}
 ];
 

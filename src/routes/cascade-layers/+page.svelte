@@ -15,6 +15,9 @@
 		<main>
 			<p>{article.leading_paragraph}</p>
 		</main>
+		<a href="/" class="stretched-link">
+			<div class="visually-hidden">Read more</div>
+		</a>
 	</article>
 {/each}
 
@@ -29,12 +32,31 @@
 
 			display: grid;
 			background: var(--base-100);
-			max-inline-size: 40rem;
+			max-inline-size: 24rem;
 			padding-inline: var(--p);
 			padding-block: calc(var(--p) + var(--image-offset)) var(--p);
 			margin-block: calc(var(--m) - var(--image-offset));
 			margin-inline: auto;
 			border-radius: var(--radius);
+			position: relative;
+		}
+
+		.stretched-link {
+			position: absolute;
+			inset: var(--image-offset) 0 0 0;
+			z-index: 1;
+			scroll-snap-align: center;
+			scroll-margin-block-start: 4rem;
+		}
+
+		.visually-hidden {
+			position: absolute;
+			clip: rect(0 0 0 0);
+			clip-path: inset(50%);
+			height: 1px;
+			width: 1px;
+			overflow: hidden;
+			white-space: nowrap;
 		}
 
 		p {
@@ -57,11 +79,11 @@
 			transition: transform 300ms;
 		}
 
-		article:nth-child(odd) figure:hover {
+		article:nth-child(odd):hover figure {
 			--offset: 1deg;
 		}
 
-		article:nth-child(even) figure:hover {
+		article:nth-child(even):hover figure {
 			--offset: 3deg;
 		}
 

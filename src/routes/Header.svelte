@@ -25,6 +25,10 @@
 
 <style>
 	nav {
+		position: sticky;
+		inset-block-start: 0.5rem;
+		backdrop-filter: contrast(2) blur(0.25rem);
+		z-index: 1;
 		display: grid;
 		grid-auto-flow: column;
 		place-content: center;
@@ -34,7 +38,7 @@
 		box-shadow: var(--shadow-elevation-medium);
 		padding: 1rem 2rem;
 		width: fit-content;
-		background: var(--base-100);
+		background: rgb(255 255 255 / 0.84);
 	}
 
 	a {
