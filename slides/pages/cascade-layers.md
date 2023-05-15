@@ -4,7 +4,7 @@ layout: intro
 
 # Cascade layers
 
-<SupportedBrowsers chrome=99 edge=99 firefox=97 safari=15.4 />
+<SupportedBrowsers url="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer" chrome=99 edge=99 firefox=97 safari=15.4 />
 
 ---
 

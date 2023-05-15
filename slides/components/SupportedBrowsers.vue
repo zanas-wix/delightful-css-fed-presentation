@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 const props = defineProps({
+    url: { default: undefined },
     firefox: { default: undefined, },
     chrome: { default: undefined, },
     safari: { default: undefined, },
@@ -26,7 +27,7 @@ const items = [
 </script>
 
 <template>
-    <div>
+    <a :href="props.url" target="_blank" rel="noopener noreferrer">
         <span v-for="(item) in items"
             :color="item.isSupported ? 'green-800' : 'red-900'"
             :bg="item.isSupported ? 'green-100' : 'red-100'"
@@ -34,16 +35,17 @@ const items = [
             :dark-bg="item.isSupported ? 'green-300' : 'red-300'"
             :dark-bg-opacity="item.isSupported ? '20' : '20'"
             :class="{ 'browser': true, [`${item.name}`]: true,  'supported': item.isSupported }" role="img">{{ item.version }}</span>
-    </div>
+    </a>
 </template>
 
 <style scoped>
-  div {
+  a {
     --logo-size: 2rem;
     
     display: flex;
     gap: 1rem;
     margin-inline: auto;
+    border: none !important;
   }
 
   .browser {

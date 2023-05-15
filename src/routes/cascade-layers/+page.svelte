@@ -13,7 +13,7 @@
 			<h2>{article.heading}</h2>
 		</header>
 		<main>
-			<p>{article.leading_paragraph}</p>
+			<p class="text-clamp">{article.leading_paragraph}</p>
 		</main>
 		<a href="/" class="stretched-link">
 			<div class="visually-hidden">Read more</div>
@@ -41,32 +41,14 @@
 			position: relative;
 		}
 
-		.stretched-link {
-			position: absolute;
-			inset: var(--image-offset) 0 0 0;
-			z-index: 1;
-			scroll-snap-align: center;
-			scroll-margin-block-start: 4rem;
-		}
-
-		.visually-hidden {
-			position: absolute;
-			clip: rect(0 0 0 0);
-			clip-path: inset(50%);
-			height: 1px;
-			width: 1px;
-			overflow: hidden;
-			white-space: nowrap;
-		}
-
 		p {
 			--lines-to-show: 3;
+		}
 
-			display: -webkit-box;
-			-webkit-box-orient: vertical;
-			-webkit-line-clamp: var(--lines-to-show);
-			overflow: hidden;
-			margin-block-start: 1rem;
+		.stretched-link {
+			inset: var(--image-offset) 0 0 0;
+			scroll-snap-align: center;
+			scroll-margin-block-start: 4rem;
 		}
 
 		figure {

@@ -3,10 +3,13 @@
 		--base-100: #fff;
 		--base-200: #f1f5f9;
 		--base-300: #e2e8f0;
+		--base-800: #2d3748;
+		--base-900: #1a202c;
 		--text-color-100: #94a3b8;
 		--text-color-200: #475569;
 		--text-color-300: #020617;
 		--primary-hsl: 193deg 94% 24%;
+		--secondary-hsl: 230deg 94% 24%;
 		--primary: hsl(var(--primary-hsl));
 		--radius: 1rem;
 
@@ -60,7 +63,73 @@
 	h6,
 	p,
 	ol,
-	ul {
+	ul,
+	dl {
 		margin-block: 0;
+	}
+}
+
+@layer elements {
+	dl,
+	dd,
+	dt {
+		margin-inline: 0;
+	}
+
+	dl {
+		display: grid;
+		grid-template-columns: max-content 1fr;
+		gap: 0.5rem 1rem;
+		justify-content: space-between;
+	}
+
+	dd {
+		color: var(--text-color-200);
+		text-align: end;
+	}
+}
+
+@layer utilities {
+	.pretty-image {
+		display: grid;
+	}
+
+	.pretty-image > * {
+		grid-area: 1 / 1;
+		z-index: 0;
+	}
+
+	.pretty-image > *:first-child {
+		filter: blur(0.3rem) brightness(0.8);
+		position: relative;
+		top: 0.25rem;
+		opacity: 0.5;
+	}
+
+	.text-success {
+		color: #10b981;
+	}
+
+	.stretched-link {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+	}
+
+	.visually-hidden {
+		position: absolute;
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		height: 1px;
+		width: 1px;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	.text-clamp {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: var(--lines-to-show, 3);
+		overflow: hidden;
 	}
 }
