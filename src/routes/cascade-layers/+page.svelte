@@ -3,16 +3,16 @@
 </script>
 
 {#each data.articles as article}
-	<article>
-		<figure>
+	<article class="article">
+		<figure class="article__image">
 			<img aria-hidden="true" src={article.image_url} alt={article.heading} />
 			<img src={article.image_url} alt={article.heading} />
 		</figure>
-		<header>
+		<header class="article__header">
 			<time>{article.date}</time> • <span>{article.author}</span>
 			<h2>{article.heading}</h2>
 		</header>
-		<main>
+		<main class="article__main">
 			<p class="text-clamp">{article.leading_paragraph}</p>
 		</main>
 		<a href="/" class="stretched-link">
@@ -22,10 +22,9 @@
 {/each}
 
 <style global>
-	@layer base, content;
 
-	@layer content {
-		article {
+	@layer components\.article {
+		.article {
 			--image-offset: -2rem;
 			--p: 2rem;
 			--m: 4rem;
@@ -41,7 +40,7 @@
 			position: relative;
 		}
 
-		p {
+		.article__main p {
 			--lines-to-show: 3;
 		}
 
@@ -51,7 +50,7 @@
 			scroll-margin-block-start: 4rem;
 		}
 
-		figure {
+		.article__image {
 			margin-block-start: var(--image-offset);
 			margin-block-end: var(--p);
 			margin-inline: 0;
@@ -61,27 +60,27 @@
 			transition: transform 300ms;
 		}
 
-		article:nth-child(odd):hover figure {
+		.article:nth-child(odd):hover .article__image {
 			--offset: 1deg;
 		}
 
-		article:nth-child(even):hover figure {
+		.article:nth-child(even):hover .article__image {
 			--offset: 3deg;
 		}
 
-		header {
+		.article__header {
 			color: var(--text-color-200);
 		}
 
-		header h2 {
+		.article__header h2 {
 			color: var(--text-color-300);
 		}
 
-		figure > * {
+		.article__image > * {
 			grid-area: 1 / 1;
 		}
 
-		img {
+		.article__image img {
 			aspect-ratio: 600 / 400;
 			border-radius: var(--radius);
 			position: relative;
@@ -89,7 +88,7 @@
 			width: 100%;
 		}
 
-		img[aria-hidden] {
+		.article__header img[aria-hidden] {
 			filter: blur(12px);
 			top: 1rem;
 			opacity: 0.5;

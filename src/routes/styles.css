@@ -1,3 +1,5 @@
+@layer base, article, components.article, components.forms, components.button, utilities;
+
 @layer base {
 	:root {
 		--base-100: #fff;
@@ -94,6 +96,14 @@
 	dd {
 		color: var(--text-color-200);
 		text-align: end;
+	}
+
+	pre {
+		background: var(--base-200);
+		padding: 1.5rem;
+		inline-size: fit-content;
+		max-inline-size: 100%;
+		border-radius: var(--radius);
 	}
 }
 

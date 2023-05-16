@@ -6,24 +6,32 @@
 
 <div class="container">
 	<div class="scroller">
-		{#each data.stocks as s}	
+		{#each data.stocks as s}
 			<div role="button" tabindex="0" class="stock-card">
-				<header>
+				<header class="stock-card__header">
 					<div>
 						<h2>{s.symbol}</h2>
-						<strong>{s.price}$</strong> <span class="text-success">+{s.change} ({s.changePercent}%)</span><br/>
+						<strong>{s.price}$</strong>
+						<span class="text-success">+{s.change} ({s.changePercent}%)</span><br />
 						<small>({s.broker}:{s.symbol})</small>
 					</div>
 					<div class="pretty-image">
-						<img aria-hidden="true" src={`https://storage.googleapis.com/iex/api/logos/${s.symbol}.png`} alt={s.symbol + ' Logo'}>
-						<img src={`https://storage.googleapis.com/iex/api/logos/${s.symbol}.png`} alt={s.symbol + ' Logo'}>
+						<img
+							aria-hidden="true"
+							src={`https://storage.googleapis.com/iex/api/logos/${s.symbol}.png`}
+							alt={s.symbol + ' Logo'}
+						/>
+						<img
+							src={`https://storage.googleapis.com/iex/api/logos/${s.symbol}.png`}
+							alt={s.symbol + ' Logo'}
+						/>
 					</div>
 				</header>
-				<figure>
+				<figure class="stock-card__figure">
 					<Stock />
-					<figcaption> <time><small>May 15, 14:10 EDT</small></time> </figcaption>
+					<figcaption><time><small>May 15, 14:10 EDT</small></time></figcaption>
 				</figure>
-				<div class="details">
+				<div class="stock-card__details">
 					<dl>
 						<dt>Open</dt>
 						<dd>{s.open.toFixed(2)}</dd>
@@ -50,7 +58,7 @@
 	</div>
 </div>
 
-<style>
+<style global>
 	.container {
 		background: var(--base-800);
 		border-radius: var(--radius);
@@ -58,7 +66,7 @@
 		inline-size: 600px;
 		margin-inline: auto;
 		min-inline-size: 12rem;
-		max-inline-size: 60vw;
+		max-inline-size: 80vw;
 		block-size: 80vh;
 		overflow: overlay;
 		resize: both;
@@ -76,12 +84,10 @@
 	}
 
 	.stock-card {
-		--template-areas:  
-			'🐶 📈'
-			'🤑 🤑';
+		--template-areas: '🐶 📈' '🤑 🤑';
 		--detail-template-columns: 1fr 1fr 1fr;
 		--chart-aspect-ratio: 2 / 1;
-		
+
 		display: grid;
 		grid-template-areas: var(--template-areas);
 		grid-auto-columns: 1fr;
@@ -89,9 +95,10 @@
 		border-radius: var(--radius);
 		padding: 1rem;
 		flex: 0 0 auto;
+		background: var(--base-100);
 	}
 
-	.stock-card :global(svg) {
+	.stock-card svg {
 		width: 100%;
 		height: auto;
 		aspect-ratio: var(--chart-aspect-ratio);
@@ -102,10 +109,14 @@
 		padding: 1rem;
 	}
 
-	.stock-card :global(svg path) { stroke: currentColor; }
-	.stock-card :global(svg circle) { fill: currentColor; }
+	.stock-card svg path {
+		stroke: currentColor;
+	}
+	.stock-card svg circle {
+		fill: currentColor;
+	}
 
-	.details {
+	.stock-card__details {
 		display: grid;
 		grid-template-columns: var(--detail-template-columns);
 		gap: 0.5rem 2rem;
@@ -114,13 +125,13 @@
 		max-inline-size: 800px;
 	}
 
-	figure {
+	.stock-card__figure {
 		grid-area: 📈;
 		margin-block: 0;
 		margin-inline: 0;
 	}
 
-	header {
+	.stock-card__header {
 		grid-area: 🐶;
 		display: flex;
 		align-items: start;
@@ -128,34 +139,30 @@
 		gap: 1rem;
 	}
 
-	small {
+	.stock-card small {
 		color: var(--text-color-100);
 		font-size: 0.75em;
 		font-weight: normal;
 	}
 
-	img {
+	.stock-card img {
 		aspect-ratio: 1 / 1;
 		inline-size: 64px;
 		border-radius: calc(var(--radius) - 0.5rem);
 	}
- 
 
-	h2 {
-		font-size: clamp(1rem, 0.5rem + 5cqi, 3rem);;
+	.stock-card h2 {
+		font-size: clamp(1rem, 0.5rem + 5cqi, 3rem);
 	}
 
 	@container (max-width: 600px) {
 		.stock-card {
-			--template-areas: 
-				'🐶'
-				'📈'
-				'🤑';
+			--template-areas: '🐶' '📈' '🤑';
 			--detail-template-columns: 1fr 1fr;
 			--chart-aspect-ratio: 3 / 1;
 		}
 	}
-	
+
 	@container (max-width: 440px) {
 		.scroller {
 			flex-direction: row;
@@ -166,26 +173,21 @@
 		}
 
 		.stock-card {
-			--template-areas: 
-				'🐶'
-				'🤑';
+			--template-areas: '🐶' '🤑';
 			--detail-template-columns: 1fr;
 			min-inline-size: calc(100cqi - 2rem);
 			scroll-snap-align: center;
 		}
 
-		header {
+		.stock-card__header {
 			flex-direction: row-reverse;
 			justify-content: start;
-			
 		}
 
-
-		figure {
+		.stock-card__figure {
 			display: none;
 		}
 	}
-
 
 	.container::-webkit-scrollbar {
 		width: 1rem;
@@ -196,9 +198,5 @@
 		height: 1rem;
 		border-radius: 1rem;
 		background: white;
-	}
-
-	.stock-card {
-		background: var(--base-100);
 	}
 </style>

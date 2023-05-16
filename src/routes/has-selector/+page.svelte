@@ -1,150 +1,195 @@
 <script lang="ts">
-	import AddIcon from "./AddIcon.svelte";
+	import { fade, slide } from 'svelte/transition';
+	import AddIcon from './AddIcon.svelte';
+	import EmptyIllustration from './EmptyIllustration.svelte';
 
-    let dialogRef: HTMLDialogElement
+	let dialogRef: HTMLDialogElement;
+	let formRef: HTMLFormElement;
+
+	type FormValues = {
+		name: string;
+		description: string;
+	};
+
+	let formValues: FormValues | undefined;
+
+	const onDialogClose = () => {
+		if (dialogRef.returnValue === 'submit') {
+			formValues = Object.fromEntries(new FormData(formRef)) as FormValues;
+		}
+	};
 </script>
 
-<header>
-    <h3>Toolbar</h3>
+<div class="card">
+	<header>
+		<h3>Toolbar</h3>
 
-    <div class="button-group">
-        <button on:click={() => dialogRef.showModal()}>Export</button>
-        <button on:click={() => dialogRef.showModal()}>
-            <AddIcon />
-            New product
-        </button>
-    </div>
-</header>
+		<div class="button-group">
+			<button on:click={() => dialogRef.showModal()}>Export</button>
+			<button on:click={() => dialogRef.showModal()}>
+				<AddIcon />
+				New product
+			</button>
+		</div>
+	</header>
 
-<dialog bind:this={dialogRef}>
-    <form method="dialog">
-        <h3>&lt;html&gt; now :has(dialog[open])</h3>
-    
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input required type="text" id="name" placeholder="Name" />
-        </div>
+	<main in:fade={{ delay: 200, duration: 1000 }}>
+		{#if formValues}
+			<pre>{JSON.stringify(formValues, null, 4)}</pre>
+		{:else}
+			<EmptyIllustration />
+			Nothing to see here
+		{/if}
+	</main>
+</div>
 
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea required id="description" placeholder="Description"></textarea>
-        </div>
-        
-        <button>Close</button>
-    </form>
+<dialog bind:this={dialogRef} on:close={onDialogClose}>
+	<form bind:this={formRef} method="dialog">
+		<h3>New product</h3>
+
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input required type="text" name="name" id="name" placeholder="Name" />
+		</div>
+
+		<div class="form-group">
+			<label for="description">Description</label>
+			<textarea required id="description" name="description" placeholder="Description" />
+		</div>
+
+		<button value="submit">Close</button>
+	</form>
 </dialog>
 
-<style>
-    header {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        background: var(--base-100);
-        border-radius: var(--radius);
-        padding: 1rem;
-        inline-size: fit-content;
-        margin-inline: auto;
-        gap: 1rem;
-        min-inline-size: 40rem;
-        box-shadow: var(--shadow-elevation-medium);
-    }
+<style global>
+	.card {
+		background: var(--base-100);
+		border-radius: var(--radius);
+		padding: 1rem;
+		inline-size: fit-content;
+		margin-inline: auto;
+		min-inline-size: 40rem;
+		box-shadow: var(--shadow-elevation-medium);
+	}
 
-    @layer components\.button {
-        .button-group {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        button {
-            appearance: none;
-            border: none;
-            background: transparent;
-            color: var(--primary);
-            display: inline-flex;
-            border-radius: var(--radius-interactive);
-            padding-inline: 1rem;
-            padding-block: 0.75rem;
-            font-size: 1rem;
-            gap: 0.5rem;
-            font-weight: 600;
-            white-space: nowrap;
-            align-items: baseline;
-        }
+	.card header {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1rem;
+	}
 
-        button :global(svg) {
-            inline-size: 2em;
-            block-size: 2em;
-            margin-block: -1em;
-            align-self: center;
-            line-height: 0px;
-            flex: 0 0 auto;
-        }
+	.card main:not(:has(> svg)) {
+		margin-block-start: 1rem;
+	}
 
-        button:has(svg) {
-            background: var(--primary);
-            color: var(--base-100);
-            padding-inline-start: 0.5rem;
-        }
+	.card main:has(svg) {
+		margin-inline: auto;
+		width: fit-content;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		padding-block: 2rem;
+	}
 
-        button :global(svg)::before {
-            content: ' '
-        }
-    }
+	@layer components\.button {
+		.card .button-group {
+			display: flex;
+			gap: 0.5rem;
+		}
 
-    @layer components\.forms {
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
+		button {
+			appearance: none;
+			border: none;
+			background: transparent;
+			color: var(--primary);
+			display: inline-flex;
+			border-radius: var(--radius-interactive);
+			padding-inline: 1rem;
+			padding-block: 0.75rem;
+			font-size: 1rem;
+			gap: 0.5rem;
+			font-weight: 600;
+			white-space: nowrap;
+			align-items: baseline;
+		}
 
-        .form-group :is(input, textarea) {
-            border-radius: var(--radius-interactive);
-            padding: 0.5rem;
-            background: var(--base-100);
-            font: inherit;
-            border: 1px solid var(--base-500);
-        }
+		button svg {
+			inline-size: 2em;
+			block-size: 2em;
+			margin-block: -1em;
+			align-self: center;
+			line-height: 0px;
+			flex: 0 0 auto;
+		}
 
-        .form-group :is(input, textarea):focus-visible {
-            border-color: var(--base-800)
-        }
+		button:has(svg) {
+			background: var(--primary);
+			color: var(--base-100);
+			padding-inline-start: 0.5rem;
+		}
 
-        .form-group:has(:invalid) label::after {
-            content: '*';
-            color: red;
-        }
-    }
-    
-    dialog[open] {
-        border: none;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow-elevation-high);
-        inline-size: 40rem;
-        padding: 2rem;
-        animation: moveIn 500ms;
-    }
+		button svg::before {
+			content: ' ';
+		}
+	}
 
-    @keyframes moveIn {
-        from {
-            transform: translateY(var(--moveIn-amount, 1rem));
-            opacity: 0;
-        }
-    }
+	@layer components\.forms {
+		.form-group {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+		}
 
-    dialog > form {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
+		.form-group input,
+		.form-group textarea {
+			border-radius: var(--radius-interactive);
+			padding: 0.5rem;
+			background: var(--base-100);
+			font: inherit;
+			border: 1px solid var(--base-500);
+		}
 
-    dialog > form > *:last-child {
-        align-self: end;
-        margin-top: 1rem;
-    }
+		.form-group input:focus-visible,
+		.form-group textarea:focus-visible {
+			border-color: var(--base-800);
+		}
 
-    :global(html:has(dialog[open])) {
-        transition: filter 0.4s;
-        filter: blur(3px) grayscale(1)
-    }
+		.form-group:has(:invalid) label::after {
+			content: '*';
+			color: red;
+		}
+	}
+
+	dialog[open] {
+		border: none;
+		border-radius: var(--radius);
+		box-shadow: var(--shadow-elevation-high);
+		inline-size: 40rem;
+		padding: 2rem;
+		animation: moveIn 500ms;
+	}
+
+	@keyframes moveIn {
+		from {
+			transform: translateY(var(--moveIn-amount, 1rem));
+			opacity: 0;
+		}
+	}
+
+	dialog > form {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	dialog > form > *:last-child {
+		align-self: end;
+		margin-top: 1rem;
+	}
+
+	html:has(dialog[open]) {
+		transition: filter 0.4s;
+		filter: blur(3px) grayscale(1);
+	}
 </style>

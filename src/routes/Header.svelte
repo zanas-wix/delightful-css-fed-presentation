@@ -17,7 +17,7 @@
 	];
 </script>
 
-<nav data-sveltekit-preload-data="off">
+<nav>
 	{#each routes as { href, name }}
 		<a aria-current={$page.route.id === href ? 'page' : null} {href}>{name}</a>
 	{/each}
