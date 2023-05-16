@@ -111,6 +111,7 @@
 		gap: 0.5rem 2rem;
 		align-items: start;
 		grid-area: 🤑;
+		max-inline-size: 800px;
 	}
 
 	figure {
@@ -155,7 +156,7 @@
 		}
 	}
 	
-	@container (max-width: 420px) {
+	@container (max-width: 440px) {
 		.scroller {
 			flex-direction: row;
 			align-items: start;
