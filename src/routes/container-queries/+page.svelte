@@ -5,69 +5,77 @@
 </script>
 
 <div class="container">
-	{#each data.stocks as s}	
-		<div class="stock-stats">
-			<header>
-				<div>
-					<h2>{s.symbol}</h2>
-					<strong>{s.price}$</strong> <span class="text-success">+{s.change} ({s.changePercent}%)</span><br/>
-					<small>({s.broker}:{s.symbol})</small>
+	<div class="scroller">
+		{#each data.stocks as s}	
+			<div role="button" tabindex="0" class="stock-card">
+				<header>
+					<div>
+						<h2>{s.symbol}</h2>
+						<strong>{s.price}$</strong> <span class="text-success">+{s.change} ({s.changePercent}%)</span><br/>
+						<small>({s.broker}:{s.symbol})</small>
+					</div>
+					<div class="pretty-image">
+						<img aria-hidden="true" src={`https://storage.googleapis.com/iex/api/logos/${s.symbol}.png`} alt={s.symbol + ' Logo'}>
+						<img src={`https://storage.googleapis.com/iex/api/logos/${s.symbol}.png`} alt={s.symbol + ' Logo'}>
+					</div>
+				</header>
+				<figure>
+					<Stock />
+					<figcaption> <time><small>May 15, 14:10 EDT</small></time> </figcaption>
+				</figure>
+				<div class="details">
+					<dl>
+						<dt>Open</dt>
+						<dd>{s.open.toFixed(2)}</dd>
+						<dt>High</dt>
+						<dd>{s.high.toFixed(2)}</dd>
+						<dt>Low</dt>
+						<dd>{s.low.toFixed(2)}</dd>
+					</dl>
+					<dl>
+						<dt>52 week high</dt>
+						<dd>{s.week52High.toFixed(2)}</dd>
+						<dt>52 week low</dt>
+						<dd>{s.week52Low.toFixed(2)}</dd>
+					</dl>
+					<dl>
+						<dt>Volume</dt>
+						<dd>{s.volume}</dd>
+						<dt>Market cap</dt>
+						<dd>{s.marketCap}</dd>
+					</dl>
 				</div>
-				<div class="pretty-image">
-					<img aria-hidden="true" src={`https://storage.googleapis.com/iex/api/logos/${s.symbol}.png`} alt={s.symbol + ' Logo'}>
-					<img src={`https://storage.googleapis.com/iex/api/logos/${s.symbol}.png`} alt={s.symbol + ' Logo'}>
-				</div>
-			</header>
-			<figure>
-				<Stock />
-				<figcaption> <time><small>May 15, 14:10 EDT</small></time> </figcaption>
-			</figure>
-			<div class="details">
-				<dl>
-					<dt>Open</dt>
-					<dd>{s.open}</dd>
-					<dt>High</dt>
-					<dd>{s.high}</dd>
-					<dt>Low</dt>
-					<dd>{s.low}</dd>
-				</dl>
-				<dl>
-					<dt>52 week high</dt>
-					<dd>{s.week52High}</dd>
-					<dt>52 week low</dt>
-					<dd>{s.week52Low}</dd>
-				</dl>
-				<dl>
-					<dt>Volume</dt>
-					<dd>{s.volume}</dd>
-					<dt>Market cap</dt>
-					<dd>{s.marketCap}</dd>
-				</dl>
 			</div>
-		</div>
-	{/each}
+		{/each}
+	</div>
 </div>
 
 <style>
 	.container {
 		background: var(--base-800);
 		border-radius: var(--radius);
-		container-type: size;
+		container: fake-window / size;
 		inline-size: 600px;
 		margin-inline: auto;
 		min-inline-size: 12rem;
 		max-inline-size: 60vw;
 		block-size: 80vh;
-		overflow: scroll;
-		padding: 1rem;
+		overflow: overlay;
 		resize: both;
 		border: 1px solid rgb(0 0 0 / 12%);
+		position: relative;
+	}
+
+	.scroller {
+		position: absolute;
+		inset: 0;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+		padding: 1rem;
 	}
 
-	.stock-stats {
+	.stock-card {
 		--template-areas:  
 			'🐶 📈'
 			'🤑 🤑';
@@ -80,11 +88,10 @@
 		gap: 1rem;
 		border-radius: var(--radius);
 		padding: 1rem;
-		overflow: auto;
 		flex: 0 0 auto;
 	}
 
-	.stock-stats :global(svg) {
+	.stock-card :global(svg) {
 		width: 100%;
 		height: auto;
 		aspect-ratio: var(--chart-aspect-ratio);
@@ -95,13 +102,13 @@
 		padding: 1rem;
 	}
 
-	.stock-stats :global(svg path) { stroke: currentColor; }
-	.stock-stats :global(svg circle) { fill: currentColor; }
+	.stock-card :global(svg path) { stroke: currentColor; }
+	.stock-card :global(svg circle) { fill: currentColor; }
 
 	.details {
 		display: grid;
 		grid-template-columns: var(--detail-template-columns);
-		gap: 0.5rem 1rem;
+		gap: 0.5rem 2rem;
 		align-items: start;
 		grid-area: 🤑;
 	}
@@ -138,7 +145,7 @@
 	}
 
 	@container (max-width: 600px) {
-		.stock-stats {
+		.stock-card {
 			--template-areas: 
 				'🐶'
 				'📈'
@@ -148,12 +155,22 @@
 		}
 	}
 	
-	@container (max-width: 400px) {
-		.stock-stats {
+	@container (max-width: 420px) {
+		.scroller {
+			flex-direction: row;
+			align-items: start;
+			scroll-snap-type: x mandatory;
+			scroll-behavior: smooth;
+			overflow: auto;
+		}
+
+		.stock-card {
 			--template-areas: 
 				'🐶'
 				'🤑';
 			--detail-template-columns: 1fr;
+			min-inline-size: calc(100cqi - 2rem);
+			scroll-snap-align: center;
 		}
 
 		header {
@@ -177,11 +194,10 @@
 		width: 1rem;
 		height: 1rem;
 		border-radius: 1rem;
-		background: rgb(0 0 0 / 24%);
-		background-image: none;
+		background: white;
 	}
 
-	.stock-stats {
+	.stock-card {
 		background: var(--base-100);
 	}
 </style>

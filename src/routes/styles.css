@@ -3,6 +3,7 @@
 		--base-100: #fff;
 		--base-200: #f1f5f9;
 		--base-300: #e2e8f0;
+		--base-500: #a0aec0;
 		--base-800: #2d3748;
 		--base-900: #1a202c;
 		--text-color-100: #94a3b8;
@@ -12,6 +13,7 @@
 		--secondary-hsl: 230deg 94% 24%;
 		--primary: hsl(var(--primary-hsl));
 		--radius: 1rem;
+		--radius-interactive: 0.5rem;
 
 		--shadow-color: var(--primary-hsl);
 		--shadow-opacity: 0.08;
@@ -66,6 +68,12 @@
 	ul,
 	dl {
 		margin-block: 0;
+	}
+
+	*:focus-visible {
+		outline: 2px solid var(--primary);
+		outline-offset: 2px;
+		border-radius: 0.25em;
 	}
 }
 
