@@ -53,7 +53,7 @@ src: ./pages/container-queries.md
 ---
 
 ---
-src: ./pages/selector-where.md
+src: ./pages/selector-has.md
 ---
 
 ---

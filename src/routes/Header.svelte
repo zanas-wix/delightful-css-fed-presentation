@@ -11,13 +11,13 @@
 			href: '/container-queries'
 		},
 		{
-			name: ':where selector',
-			href: '/where-selector'
+			name: ':has selector',
+			href: '/has-selector'
 		}
 	];
 </script>
 
-<nav>
+<nav data-sveltekit-preload-data="off">
 	{#each routes as { href, name }}
 		<a aria-current={$page.route.id === href ? 'page' : null} {href}>{name}</a>
 	{/each}
