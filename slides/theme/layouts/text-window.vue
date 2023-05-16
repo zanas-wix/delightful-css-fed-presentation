@@ -1,10 +1,10 @@
 <template>
   <div class="slidev-layout">
-    <div class="grid grid-cols-2" :class="$attrs.reverse ? 'gap-16' : 'gap-8'">
+    <div class="grid grid-cols-2 h-full" :class="$attrs.reverse ? 'gap-16' : 'gap-8'">
       <div class="prose pr-16" :class="{ 'order-1': $attrs.reverse }">
         <slot name="default" />
       </div>
-      <div class="relative">
+      <div class="relative flex flex-col justify-center">
         <AsGraphic
           type="zigzag"
           class="absolute transform scale-75 -bottom-20 -right-16"

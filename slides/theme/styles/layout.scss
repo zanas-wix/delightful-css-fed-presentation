@@ -13,11 +13,18 @@ html:not(.dark) #slide-content {
   /* light mode css here */
   @apply bg-white text-primary;
 
+  .console {
+    background: white;
+  }
 }
 
 .dark #slide-content {
   --curve-big-fill: rgb(183, 183, 183);
   --curve-small-fill: rgb(110, 110, 110);
+
+  .console {
+    background: rgb(36, 41, 46);
+  }
 
   /* dark mode css here */
   @apply bg-primary-600 text-light-300;
