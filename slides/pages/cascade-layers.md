@@ -13,11 +13,11 @@ layout: text-window
 ## Cascade concept
 
 - Relevance
-- Importance
-- Origin
-- 🥐 Layers
-- Specificity
-- Order of appearance
+- Importance / normal vs !important
+- Origin / author vs user-agent
+- 🥐 Layers / @layer
+- Specificity / 0,0,0 vs 1,0,0
+- Order of appearance / last one wins
 
 [MDN - Cascade layers](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_layers)
 
@@ -46,6 +46,12 @@ layout: text-window
 ```
 
 <!--
+Cascade layers are most relevant when you're working with CSS from multiple sources, when there are conflicting CSS selectors and competing specificities, or when you're considering using !important.
+
+The C in CSS stands for "Cascading". It is the method by which styles cascade together. The user agent goes through several, very clearly-defined steps to determine the values that get assigned to every property for every element. We will briefly list these steps here and then dig deeper into step 4, cascade layers, which is what you came here to learn:
+
+
+
 - Relevance: Find all the declaration blocks with a selector match for each element.
 - Importance: Sort rules based on if they are normal or important. Important styles are those that have the `!important` flag set.
 - Origin: Within each of the two importance buckets, sort rules by author, user, or user-agent origin.
@@ -60,6 +66,10 @@ layout: text-window
 
 ## Cascade layers
 
+- Group concerns into with @layer
+- Control the layer order after the fact
+- Styles without `@layer` have a higher precedence 
+- Great potential for libraries (WSR)
 
 ::window::
 

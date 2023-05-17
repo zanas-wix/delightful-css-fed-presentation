@@ -16,22 +16,23 @@ themeConfig:
   - --slidev-theme-secondary: red
 ---
 
-# Delightful CSS
+# Noice CSS
 
-What's on the horizon?
+CSS is getting so good
 
+Žanas Stundys ✍️ Wix Blog FED
 
 ---
 hideInToc: true
 ---
    
-# Features we'll talk about
+## Features we'll talk about
 
 <Toc maxDepth="1"></Toc>
 
 ---
 
-# Browsers supported by Wix
+## Browsers supported by Wix
 
 <SupportedBrowsers chrome=92 edge=100 firefox=91 safari=14 />
 
@@ -43,6 +44,14 @@ hideInToc: true
 - Safari 14, released in September 2020
 
 https://support.wix.com/en/article/supported-browsers
+
+---
+src: ./pages/math-functions.md
+---
+
+---
+src: ./pages/scroll-snap-type.md
+---
 
 ---
 src: ./pages/cascade-layers.md
@@ -61,6 +70,15 @@ layout: end
 hideInToc: true
 ---
 
-# Learn More
+# Continue your journey
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+[GUI Challenges - Google Chrome Developers - YouTube](https://www.youtube.com/playlist?list=PLNYkxOF6rcIAaV1wwI9540OC_3XoIzMjQ)
+
+[CSS for JS - Josh W Comeau Courses](https://css-for-js.dev/)
+
+[CSS Weekly newsletter](https://css-weekly.com/)
+
+[web.dev](https://web.dev/learn/)
+
+
+Good luck and have fun!

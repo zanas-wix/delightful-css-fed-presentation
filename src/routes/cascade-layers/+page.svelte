@@ -89,7 +89,7 @@
 			object-fit: cover;
 		}
 
-		.article__header img[aria-hidden] {
+		.article__image img[aria-hidden] {
 			filter: blur(12px);
 			top: 1rem;
 			opacity: 0.5;

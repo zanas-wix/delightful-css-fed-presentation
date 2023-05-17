@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { fade, slide } from 'svelte/transition';
+	import { fade, slide,  } from 'svelte/transition';
 	import AddIcon from './AddIcon.svelte';
 	import EmptyIllustration from './EmptyIllustration.svelte';
 
@@ -7,16 +7,22 @@
 	let formRef: HTMLFormElement;
 
 	type FormValues = {
+		id: string;
 		name: string;
 		description: string;
 	};
 
-	let formValues: FormValues | undefined;
+	let formValues: FormValues[] = [];
 
 	const onDialogClose = () => {
 		if (dialogRef.returnValue === 'submit') {
-			formValues = Object.fromEntries(new FormData(formRef)) as FormValues;
+			formValues = [...formValues, { ...Object.fromEntries(new FormData(formRef)) as FormValues, id: crypto.randomUUID() }];
+			formRef.reset();
 		}
+	};
+
+	const onDelete = (index: number) => {
+		formValues = formValues.filter((_, i) => i !== index);
 	};
 </script>
 
@@ -34,12 +40,15 @@
 	</header>
 
 	<main in:fade={{ delay: 200, duration: 1000 }}>
-		{#if formValues}
-			<pre>{JSON.stringify(formValues, null, 4)}</pre>
+		{#each formValues as formValue, i (formValue.id)}
+			<div transition:slide|local style="padding-block: 1px">
+				<pre style="inline-size: 280px; overflow: auto;">{JSON.stringify(formValue, null, 4)}</pre>
+				<button on:click={() => onDelete(i)}>Delete</button>
+			</div>
 		{:else}
 			<EmptyIllustration />
 			Nothing to see here
-		{/if}
+		{/each}
 	</main>
 </div>
 

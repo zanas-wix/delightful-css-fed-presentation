@@ -1,7 +1,7 @@
 <template>
   <div class="slidev-layout" :class="{ grid: $attrs.center }">
     <CornerCurves class="absolute bottom-0 right-0 transform scale-x--100" />
-    <div class="my-auto z-10 relative">
+    <div class="my-auto z-10 relative prose">
       <slot />
     </div>
   </div>

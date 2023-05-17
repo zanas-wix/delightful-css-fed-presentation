@@ -91,8 +91,14 @@ html:not(.dark) #slide-content {
   }
 
   code {
-    @apply dark:text-secondary-300 text-secondary-600;
+    @apply dark:text-secondary-300 text-gray-700 bg-gray-200 dark:bg-gray-800;
 
+    font-size: 0.75em;
+    font-weight: bold;
+  }
+
+  .shiki code {
+    background: none;
     font-size: 1em;
   }
 

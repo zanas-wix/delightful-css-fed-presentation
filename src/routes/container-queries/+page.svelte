@@ -71,7 +71,6 @@ import Stock from './Stock.svelte';
 		container: fake-window / size;
 		inline-size: 600px;
 		margin-inline: auto;
-		min-inline-size: 12rem;
 		max-inline-size: 80vw;
 		block-size: 80vh;
 		overflow: overlay;
