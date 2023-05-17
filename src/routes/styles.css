@@ -98,6 +98,11 @@
 		text-align: end;
 	}
 
+	main {
+		inline-size: fit-content;
+		margin-inline: auto;
+	}
+
 	pre {
 		background: var(--base-200);
 		padding: 1.5rem;

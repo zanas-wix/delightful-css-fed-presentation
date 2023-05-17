@@ -33,11 +33,13 @@
 		grid-auto-flow: column;
 		place-content: center;
 		gap: 2rem;
-		margin: 2rem auto;
+		margin-block: 2rem;
+		margin-inline: auto;
 		border-radius: 1rem;
 		box-shadow: var(--shadow-elevation-medium);
-		padding: 1rem 2rem;
-		width: fit-content;
+		padding-block: 1rem;
+		padding-inline: 2rem;
+		inline-size: fit-content;
 		background: rgb(255 255 255 / 0.84);
 	}
 

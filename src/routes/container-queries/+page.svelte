@@ -1,8 +1,10 @@
 <script>
-	import Stock from './Stock.svelte';
+	import ArrowTopRight from './ArrowTopRight.svelte';
+import Stock from './Stock.svelte';
 
 	export let data;
 </script>
+
 
 <div class="container">
 	<div class="scroller">
@@ -57,6 +59,10 @@
 		{/each}
 	</div>
 </div>
+<p class="resize-text">
+	Resize me <ArrowTopRight />
+</p>
+
 
 <style global>
 	.container {
@@ -198,5 +204,17 @@
 		height: 1rem;
 		border-radius: 1rem;
 		background: white;
+	}
+
+	.resize-text {
+		margin-inline-end: 0.25rem;;
+		margin-block-start: 0.5rem;;
+		display: flex;
+		justify-content: end;
+	}
+
+	.resize-text svg {
+		width: 1.5em;
+		height: 1.5em;
 	}
 </style>

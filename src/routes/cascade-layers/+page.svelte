@@ -81,11 +81,12 @@
 		}
 
 		.article__image img {
-			aspect-ratio: 600 / 400;
 			border-radius: var(--radius);
 			position: relative;
 			display: block;
-			width: 100%;
+			inline-size: 100%;
+			block-size: 260px;
+			object-fit: cover;
 		}
 
 		.article__header img[aria-hidden] {
