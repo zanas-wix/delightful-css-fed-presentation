@@ -11,3 +11,10 @@ Talk presented in Vilnius FED Guild meetup on May 19th, 2023.
     npm install
     npm run dev
     ```
+
+## Continue your journey
+
+- [GUI Challenges - Google Chrome Developers - YouTube](https://www.youtube.com/playlist?list=PLNYkxOF6rcIAaV1wwI9540OC_3XoIzMjQ)
+- [CSS for JS - Josh W Comeau Courses](https://css-for-js.dev/)
+- [CSS Weekly newsletter](https://css-weekly.com/)
+- [web.dev](https://web.dev/learn/)

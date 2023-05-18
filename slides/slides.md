@@ -48,11 +48,11 @@ hideInToc: true
 https://support.wix.com/en/article/supported-browsers
 
 ---
-src: ./pages/math-functions.md
+src: ./pages/scroll-snap-type.md
 ---
 
 ---
-src: ./pages/scroll-snap-type.md
+src: ./pages/math-functions.md
 ---
 
 ---
@@ -74,6 +74,7 @@ hideInToc: true
 
 # Continue your journey
 
+
 [GUI Challenges - Google Chrome Developers - YouTube](https://www.youtube.com/playlist?list=PLNYkxOF6rcIAaV1wwI9540OC_3XoIzMjQ)
 
 [CSS for JS - Josh W Comeau Courses](https://css-for-js.dev/)
@@ -82,5 +83,5 @@ hideInToc: true
 
 [web.dev](https://web.dev/learn/)
 
-
-Good luck and have fun!
+Good luck and have fun!  
+Slides at [wix-a/vilnius-fed-noice-css-slides](https://github.com/wix-a/vilnius-fed-noice-css-slides)
