@@ -14,10 +14,14 @@ layout: text-window
 
 ## Scroll snap possibilities
 
+<v-clicks>
+
 - Carousels
 - Full screen sections (aka slides)
 - Photo galleries
 - Mobile-app interfaces (Tiktok clone)
+
+</v-clicks>
 
 ::window::
 

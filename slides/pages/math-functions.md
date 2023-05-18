@@ -41,6 +41,12 @@ For example:
 }
 ```
 
+<!--
+Fluid typography calculator
+https://courses.joshwcomeau.com/css-for-js/05-responsive-css/16-fluid-calculator
+-->
+
+
 ---
 layout: iframe
 url: https://stackblitz.com/edit/web-platform-hmhjg1?ctl=1&embed=1&hideNavigation=1&file=styles.css

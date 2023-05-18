@@ -1,7 +1,5 @@
 ---
 theme: ./theme
-background: >-
-  https://images.unsplash.com/photo-1532799044142-bace80c88320?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80
 class: text-center
 highlighter: shiki
 lineNumbers: false
@@ -14,8 +12,6 @@ css: unocss
 layout: intro
 hideInToc: true
 title: Noice CSS
-themeConfig:
-  - --slidev-theme-secondary: red
 ---
 
 # Noice CSS
@@ -24,28 +20,56 @@ CSS is getting so good
 
 Žanas Stundys ✍️ Wix Blog FED
 
+<!--
+- Learn something new
+- Ask questions whenever
+-->
+
 ---
 hideInToc: true
 ---
-   
+
 ## Features we'll talk about
 
+<v-clicks>
+
 <Toc maxDepth="1"></Toc>
+
+🪄 Plus some other bits and pieces  
+
+🙋‍♀️ Feel free to ask questions at any time
+
+</v-clicks>
+
+<!--
+Bunch of other stuff along the way
+
+- clever ways of using css variables
+- fluid typography
+- alternative color formats lch
+-->
 
 ---
 
 ## Browsers supported by Wix
 
-<SupportedBrowsers chrome=92 edge=100 firefox=91 safari=14 />
+<v-clicks>
 
-<br/>
+https://support.wix.com/en/article/supported-browsers
 
 - Chrome 92, released in July 2021
 - Edge 100, released in April 2022
 - Firefox 91, released in August 2021
 - Safari 14, released in September 2020
 
-https://support.wix.com/en/article/supported-browsers
+<SupportedBrowsers chrome=92 edge=100 firefox=91 safari=14 />
+
+</v-clicks>
+
+<!--
+- Safari is almost a 3 year old browser we still need to support
+- All green = safe to use @ Wix
+-->
 
 ---
 src: ./pages/scroll-snap-type.md
