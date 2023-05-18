@@ -6,12 +6,14 @@ class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
-  ## Delightful CSS
-  Latest features in CSS
+  ## Noice CSS
+  CSS is getting so good
+
+  Žanas Stundys ✍️ Wix Blog FED
 css: unocss
 layout: intro
 hideInToc: true
-title: Delightful CSS
+title: Noice CSS
 themeConfig:
   - --slidev-theme-secondary: red
 ---
